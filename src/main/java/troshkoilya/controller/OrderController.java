@@ -11,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -92,5 +95,20 @@ public class OrderController {
         orderService.saveOrders(orders);
 
         return "redirect:/order";
+    }
+
+    @GetMapping("/o/export")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        response.setContentType("application/octet-stream");
+
+        String headerkey = "Content-Disposition";
+        String headerValue = "attachement; filename=orders.xls";
+
+        response.setHeader(headerkey, headerValue);
+
+        List<Order> list = (List<Order>) orderService.loadAllOrders();
+
+        UserExcelExporter excelExporter = new UserExcelExporter(list);
+        excelExporter.export(response);
     }
 }

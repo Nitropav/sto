@@ -28,6 +28,15 @@ public class Master {
         this.year_start_working = year_start_working;
     }
 
+    public Master(String fIO, String date_of_birth, int category, int profile, double salary, String year_start_working) {
+        this.fIO = fIO;
+        this.date_of_birth = date_of_birth;
+        this.category = category;
+        this.profile = profile;
+        this.salary = salary;
+        this.year_start_working = year_start_working;
+    }
+
     public Long getIdmaster() {
         return idmaster;
     }

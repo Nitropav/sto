@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/order">Заказы</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/order/o/export">Экспорт в файл</a>
+                </li>
             </#if>
             <#if name != "unknown" && !isAdmin>
                 <div class="mr-3">
